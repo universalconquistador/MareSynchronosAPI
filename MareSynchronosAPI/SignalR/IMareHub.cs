@@ -49,7 +49,7 @@ public interface IMareHub
     Task GroupChangeOwnership(GroupPairDto groupPair);
     Task<bool> GroupChangePassword(GroupPasswordDto groupPassword);
     Task GroupClear(GroupDto group);
-    Task<GroupJoinDto> GroupCreate();
+    Task<GroupJoinDto> GroupCreate(bool showNsfwWarning);
     Task<List<string>> GroupCreateTempInvite(GroupDto group, int amount);
     Task GroupDelete(GroupDto group);
     Task<List<BannedGroupUserDto>> GroupGetBannedUsers(GroupDto group);
