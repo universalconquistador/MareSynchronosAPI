@@ -10,5 +10,4 @@ public record GroupDto(GroupData Group)
     public string GID => Group.GID;
     public string? GroupAlias => Group.Alias;
     public string GroupAliasOrGID => Group.AliasOrGID;
-    public bool? ShowNsfwWarning => Group.ShowNsfwWarning;
 }
