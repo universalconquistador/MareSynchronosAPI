@@ -4,6 +4,7 @@ using MareSynchronos.API.Dto;
 using MareSynchronos.API.Dto.CharaData;
 using MareSynchronos.API.Dto.Group;
 using MareSynchronos.API.Dto.User;
+using MareSynchronos.API.Dto.Pairing;
 
 namespace MareSynchronos.API.SignalR;
 
@@ -88,4 +89,7 @@ public interface IMareHub
     Task GposeLobbyPushCharacterData(CharaDataDownloadDto charaDownloadDto);
     Task GposeLobbyPushPoseData(PoseData poseData);
     Task GposeLobbyPushWorldData(WorldData worldData);
+
+    Task RequestPair(PairRequestStartDto start, CancellationToken ct = default);
+    Task RespondPairRequest(PairRequestResponseDto response, CancellationToken ct = default);
 }

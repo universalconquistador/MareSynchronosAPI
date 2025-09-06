@@ -4,6 +4,7 @@ using MareSynchronos.API.Dto;
 using MareSynchronos.API.Dto.CharaData;
 using MareSynchronos.API.Dto.Group;
 using MareSynchronos.API.Dto.User;
+using MareSynchronos.API.Dto.Pairing;
 
 namespace MareSynchronos.API.SignalR;
 
@@ -58,4 +59,6 @@ public interface IMareHubClient : IMareHub
     void OnGposeLobbyPushCharacterData(Action<CharaDataDownloadDto> act);
     void OnGposeLobbyPushPoseData(Action<UserData, PoseData> act);
     void OnGposeLobbyPushWorldData(Action<UserData, WorldData> act);
+
+    void OnPairRequest(Action<PairRequestDto> act);
 }
