@@ -42,6 +42,12 @@ public interface IMareHub
     Task Client_GposeLobbyPushPoseData(UserData userData, PoseData poseData);
     Task Client_GposeLobbyPushWorldData(UserData userData, WorldData worldData);
 
+    /// <summary>
+    /// Confirms to the client that they have started or stopped listening for broadcasts.
+    /// </summary>
+    /// <param name="isListening">Whether the client is now listening for broadcasts.</param>
+    Task Client_BroadcastListeningChanged(bool isListening);
+
     Task<ConnectionDto> GetConnectionDto();
 
     Task GroupBanUser(GroupPairDto dto, string reason);
@@ -88,4 +94,34 @@ public interface IMareHub
     Task GposeLobbyPushCharacterData(CharaDataDownloadDto charaDownloadDto);
     Task GposeLobbyPushPoseData(PoseData poseData);
     Task GposeLobbyPushWorldData(WorldData worldData);
+
+    /// <summary>
+    /// Starts listening for broadcasts to the player.
+    /// </summary>
+    /// <param name="ident">The identity of the player's character.</param>
+    Task BroadcastStartListening(string ident);
+
+    /// <summary>
+    /// Stops listening for broadcasts to the player.
+    /// </summary>
+    Task BroadcastStopListening();
+
+    /// <summary>
+    /// Sends a broadcast for one of the player's groups, and retrieves all the broadcasts that have come in for this player
+    /// since listening started or the last receive call.
+    /// </summary>
+    /// <param name="location">The location of the player.</param>
+    /// <param name="visibleIdents">The identities of the other players around the player.</param>
+    /// <param name="sendDto">Information about broadcasting the group.</param>
+    /// <returns>The broadcasts that have been received for the player.</returns>
+    Task<List<GroupBroadcastDto>> BroadcastSendReceive(WorldData location, List<string> visibleIdents, BroadcastSendDto sendDto);
+
+    /// <summary>
+    /// Retrieves all the broadcasts that have come in for this player
+    /// since listening started or the last receive call.
+    /// </summary>
+    /// <param name="location">The location of the player.</param>
+    /// <param name="visibleIdents">The identities of the other players around the player.</param>
+    /// <returns>The broadcasts that have been received for the player.</returns>
+    Task<List<GroupBroadcastDto>> BroadcastReceive(WorldData location, List<string> visibleIdents);
 }

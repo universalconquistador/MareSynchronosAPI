@@ -58,4 +58,6 @@ public interface IMareHubClient : IMareHub
     void OnGposeLobbyPushCharacterData(Action<CharaDataDownloadDto> act);
     void OnGposeLobbyPushPoseData(Action<UserData, PoseData> act);
     void OnGposeLobbyPushWorldData(Action<UserData, WorldData> act);
+
+    void OnBroadcastListeningChanged(Action<bool> act);
 }
