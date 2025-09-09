@@ -23,6 +23,7 @@ public interface IMareHub
     Task Client_GroupSendFullInfo(GroupFullInfoDto groupInfo);
     Task Client_GroupSendInfo(GroupInfoDto groupInfo);
     Task Client_ReceiveServerMessage(MessageSeverity messageSeverity, string message);
+    Task Client_ReceivePairingMessage(UserDto dto);
     Task Client_UpdateSystemInfo(SystemInfoDto systemInfo);
     Task Client_UserAddClientPair(UserPairDto dto);
     Task Client_UserReceiveCharacterData(OnlineUserCharaDataDto dataDto);
@@ -62,7 +63,7 @@ public interface IMareHub
     Task GroupUnbanUser(GroupPairDto groupPair);
     Task<int> GroupPrune(GroupDto group, int days, bool execute);
 
-    Task UserAddPair(UserDto user);
+    Task UserAddPair(UserDto user, bool pairingNotice);
     Task UserDelete();
     Task<List<OnlineUserIdentDto>> UserGetOnlinePairs(CensusDataDto? censusDataDto);
     Task<List<UserFullPairDto>> UserGetPairedClients();
