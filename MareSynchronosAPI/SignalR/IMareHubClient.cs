@@ -27,6 +27,8 @@ public interface IMareHubClient : IMareHub
 
     void OnReceiveServerMessage(Action<MessageSeverity, string> act);
 
+    void OnReceivePairingMessage(Action<UserDto> act);
+
     void OnUpdateSystemInfo(Action<SystemInfoDto> act);
 
     void OnUserAddClientPair(Action<UserPairDto> act);
