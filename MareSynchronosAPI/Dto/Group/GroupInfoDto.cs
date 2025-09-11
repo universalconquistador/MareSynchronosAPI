@@ -9,6 +9,7 @@ public record GroupInfoDto(GroupData Group, UserData Owner, GroupPermissions Gro
 {
     public GroupPermissions GroupPermissions { get; set; } = GroupPermissions;
     public UserData Owner { get; set; } = Owner;
+    public GroupPublicData PublicData { get; set; } = PublicData;
 
     public string OwnerUID => Owner.UID;
     public string? OwnerAlias => Owner.Alias;
