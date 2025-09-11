@@ -123,7 +123,6 @@ public interface IMareHub
     /// since listening started or the last receive call.
     /// </summary>
     /// <param name="location">The location of the player.</param>
-    /// <param name="visibleIdents">The identities of the other players around the player.</param>
     /// <returns>The broadcasts that have been received for the player.</returns>
-    Task<List<GroupBroadcastDto>> BroadcastReceive(WorldData location, List<string> visibleIdents);
+    Task<List<GroupBroadcastDto>> BroadcastReceive(WorldData location);
 }
