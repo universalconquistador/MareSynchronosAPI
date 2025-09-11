@@ -55,6 +55,7 @@ public interface IMareHub
     Task GroupChangeGroupPermissionState(GroupPermissionDto dto);
     Task GroupChangeOwnership(GroupPairDto groupPair);
     Task<bool> GroupChangePassword(GroupPasswordDto groupPassword);
+    Task GroupSetDescription(GroupDto group, string newDescription);
     Task GroupClear(GroupDto group);
     Task<GroupJoinDto> GroupCreate();
     Task<List<string>> GroupCreateTempInvite(GroupDto group, int amount);

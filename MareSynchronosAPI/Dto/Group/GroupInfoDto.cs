@@ -5,7 +5,7 @@ using MessagePack;
 namespace MareSynchronos.API.Dto.Group;
 
 [MessagePackObject(keyAsPropertyName: true)]
-public record GroupInfoDto(GroupData Group, UserData Owner, GroupPermissions GroupPermissions) : GroupDto(Group)
+public record GroupInfoDto(GroupData Group, UserData Owner, GroupPermissions GroupPermissions, GroupPublicData PublicData) : GroupDto(Group)
 {
     public GroupPermissions GroupPermissions { get; set; } = GroupPermissions;
     public UserData Owner { get; set; } = Owner;
@@ -15,4 +15,4 @@ public record GroupInfoDto(GroupData Group, UserData Owner, GroupPermissions Gro
     public string OwnerAliasOrUID => Owner.AliasOrUID;
 }
 
-public record GroupJoinInfoDto(GroupData Group, UserData Owner, GroupPermissions GroupPermissions, bool Success) : GroupInfoDto(Group, Owner, GroupPermissions);
+public record GroupJoinInfoDto(GroupData Group, UserData Owner, GroupPermissions GroupPermissions, GroupPublicData PublicData, bool Success) : GroupInfoDto(Group, Owner, GroupPermissions, PublicData);

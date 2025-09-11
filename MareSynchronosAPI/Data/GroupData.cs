@@ -8,3 +8,6 @@ public record GroupData(string GID, string? Alias = null)
     [IgnoreMember]
     public string AliasOrGID => string.IsNullOrWhiteSpace(Alias) ? GID : Alias;
 }
+
+[MessagePackObject(keyAsPropertyName: true)]
+public record GroupPublicData(string Description = "", bool KnownPasswordless = false);
