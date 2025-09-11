@@ -14,7 +14,7 @@ namespace MareSynchronos.API.Dto.Group;
 /// <param name="Group">The group that was broadcast.</param>
 /// <param name="Owner">The owner of the group.</param>
 /// <param name="Broadcasters">The players who send broadcasts to the player about the group.</param>
-/// <param name="CurrentMemberCount">The number of online members of this group.</param>
+/// <param name="CurrentMemberCount">The total number of online and offline members of this group.</param>
 [MessagePackObject(keyAsPropertyName: true)]
 public record GroupBroadcastDto(GroupData Group, UserData Owner, List<UserData> Broadcasters, ulong CurrentMemberCount)
 {
