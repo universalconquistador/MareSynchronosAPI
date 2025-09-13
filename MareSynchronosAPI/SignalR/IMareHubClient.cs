@@ -27,6 +27,8 @@ public interface IMareHubClient : IMareHub
 
     void OnReceiveServerMessage(Action<MessageSeverity, string> act);
 
+    void OnReceivePairingMessage(Action<UserDto> act);
+
     void OnUpdateSystemInfo(Action<SystemInfoDto> act);
 
     void OnUserAddClientPair(Action<UserPairDto> act);
@@ -58,4 +60,6 @@ public interface IMareHubClient : IMareHub
     void OnGposeLobbyPushCharacterData(Action<CharaDataDownloadDto> act);
     void OnGposeLobbyPushPoseData(Action<UserData, PoseData> act);
     void OnGposeLobbyPushWorldData(Action<UserData, WorldData> act);
+
+    void OnBroadcastListeningChanged(Action<bool> act);
 }
