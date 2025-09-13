@@ -24,7 +24,7 @@ public static class GroupPermissionsExtensions
         return perm.HasFlag(GroupPermissions.PreferDisableVFX);
     }
 
-    public static bool IsEnableGuests(this GroupPermissions perm)
+    public static bool IsEnableGuestMode(this GroupPermissions perm)
     {
         return perm.HasFlag(GroupPermissions.EnableGuests);
     }
@@ -53,7 +53,7 @@ public static class GroupPermissionsExtensions
         else perm &= ~GroupPermissions.PreferDisableVFX;
     }
 
-    public static void SetEnableGuests(this ref GroupPermissions perm, bool set)
+    public static void SetEnableGuestMode(this ref GroupPermissions perm, bool set)
     {
         if (set) perm |= GroupPermissions.EnableGuests;
         else perm &= ~GroupPermissions.EnableGuests;
