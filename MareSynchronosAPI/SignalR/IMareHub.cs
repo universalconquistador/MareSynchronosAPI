@@ -23,6 +23,7 @@ public interface IMareHub
     Task Client_GroupSendFullInfo(GroupFullInfoDto groupInfo);
     Task Client_GroupSendInfo(GroupInfoDto groupInfo);
     Task Client_ReceiveServerMessage(MessageSeverity messageSeverity, string message);
+    Task Client_ReceivePairingMessage(UserDto dto);
     Task Client_UpdateSystemInfo(SystemInfoDto systemInfo);
     Task Client_UserAddClientPair(UserPairDto dto);
     Task Client_UserReceiveCharacterData(OnlineUserCharaDataDto dataDto);
@@ -42,13 +43,20 @@ public interface IMareHub
     Task Client_GposeLobbyPushPoseData(UserData userData, PoseData poseData);
     Task Client_GposeLobbyPushWorldData(UserData userData, WorldData worldData);
 
+    /// <summary>
+    /// Confirms to the client that they have started or stopped listening for broadcasts.
+    /// </summary>
+    /// <param name="isListening">Whether the client is now listening for broadcasts.</param>
+    Task Client_BroadcastListeningChanged(bool isListening);
+
     Task<ConnectionDto> GetConnectionDto();
 
     Task GroupBanUser(GroupPairDto dto, string reason);
     Task GroupChangeGroupPermissionState(GroupPermissionDto dto);
     Task GroupChangeOwnership(GroupPairDto groupPair);
     Task<bool> GroupChangePassword(GroupPasswordDto groupPassword);
-    Task GroupClear(GroupDto group);
+    Task GroupSetDescription(GroupDto group, string newDescription);
+    Task GroupClear(GroupDto group, bool clearOnlyGuestUsers);
     Task<GroupJoinDto> GroupCreate();
     Task<List<string>> GroupCreateTempInvite(GroupDto group, int amount);
     Task GroupDelete(GroupDto group);
@@ -62,7 +70,7 @@ public interface IMareHub
     Task GroupUnbanUser(GroupPairDto groupPair);
     Task<int> GroupPrune(GroupDto group, int days, bool execute);
 
-    Task UserAddPair(UserDto user);
+    Task UserAddPair(UserDto user, bool pairingNotice);
     Task UserDelete();
     Task<List<OnlineUserIdentDto>> UserGetOnlinePairs(CensusDataDto? censusDataDto);
     Task<List<UserFullPairDto>> UserGetPairedClients();
@@ -88,4 +96,33 @@ public interface IMareHub
     Task GposeLobbyPushCharacterData(CharaDataDownloadDto charaDownloadDto);
     Task GposeLobbyPushPoseData(PoseData poseData);
     Task GposeLobbyPushWorldData(WorldData worldData);
+
+    /// <summary>
+    /// Starts listening for broadcasts to the player.
+    /// </summary>
+    /// <param name="ident">The identity of the player's character.</param>
+    Task BroadcastStartListening(string ident);
+
+    /// <summary>
+    /// Stops listening for broadcasts to the player.
+    /// </summary>
+    Task BroadcastStopListening();
+
+    /// <summary>
+    /// Sends a broadcast for one of the player's groups, and retrieves all the broadcasts that have come in for this player
+    /// since listening started or the last receive call.
+    /// </summary>
+    /// <param name="location">The location of the player.</param>
+    /// <param name="visibleIdents">The identities of the other players around the player.</param>
+    /// <param name="sendDto">Information about broadcasting the group.</param>
+    /// <returns>The broadcasts that have been received for the player.</returns>
+    Task<List<GroupBroadcastDto>> BroadcastSendReceive(WorldData location, List<string> visibleIdents, BroadcastSendDto sendDto);
+
+    /// <summary>
+    /// Retrieves all the broadcasts that have come in for this player
+    /// since listening started or the last receive call.
+    /// </summary>
+    /// <param name="location">The location of the player.</param>
+    /// <returns>The broadcasts that have been received for the player.</returns>
+    Task<List<GroupBroadcastDto>> BroadcastReceive(WorldData location);
 }
