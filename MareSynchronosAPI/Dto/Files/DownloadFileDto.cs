@@ -7,14 +7,21 @@ public record DownloadFileDto : ITransferFileDto
 {
     public bool FileExists { get; set; } = true;
     public string Hash { get; set; } = string.Empty;
+
+    /// <summary>
+    /// This used to be the URL of the file shard to get the file from.
+    /// This has been removed, and now clients must use
+    /// <see cref="DirectDownloadUrl"/> to download the file contents.
+    /// </summary>
+    [Obsolete]
     public string Url { get; set; } = string.Empty;
 
     /// <summary>
     /// A URL where this file can be directly downloaded from in compressed form.
     /// </summary>
     /// <remarks>
-    /// Null or empty means that this file is not available for direct download and
-    /// must be accessed through the legacy block file download mechanism.
+    /// This should not be null or empty now that the legacy download system has been
+    /// removed.
     /// </remarks>
     public string? DirectDownloadUrl { get; set; } = null;
 
