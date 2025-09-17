@@ -14,7 +14,6 @@ public interface IMareHub
 
     Task<bool> CheckClientHealth();
 
-    Task Client_DownloadReady(Guid requestId);
     Task Client_GroupChangePermissions(GroupPermissionDto groupPermission);
     Task Client_GroupDelete(GroupDto groupDto);
     Task Client_GroupPairChangeUserInfo(GroupPairUserInfoDto userInfo);
