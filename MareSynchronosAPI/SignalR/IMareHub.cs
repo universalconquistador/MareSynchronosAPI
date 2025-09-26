@@ -62,6 +62,7 @@ public interface IMareHub
     Task<List<BannedGroupUserDto>> GroupGetBannedUsers(GroupDto group);
     Task<GroupJoinInfoDto> GroupJoin(GroupPasswordDto passwordedGroup);
     Task<bool> GroupJoinFinalize(GroupJoinDto passwordedGroup);
+    Task GroupZoneJoin(GroupZoneJoinDto groupZoneJoin);
     Task GroupLeave(GroupDto group);
     Task GroupRemoveUser(GroupPairDto groupPair);
     Task GroupSetUserInfo(GroupPairUserInfoDto groupPair);

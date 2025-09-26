@@ -10,4 +10,4 @@ public record GroupData(string GID, string? Alias = null)
 }
 
 [MessagePackObject(keyAsPropertyName: true)]
-public record GroupPublicData(string Description = "", bool KnownPasswordless = false, bool GuestModeEnabled = false);
+public record GroupPublicData(string Description = "", bool KnownPasswordless = false, bool GuestModeEnabled = false, bool IsZoneSync = false);
