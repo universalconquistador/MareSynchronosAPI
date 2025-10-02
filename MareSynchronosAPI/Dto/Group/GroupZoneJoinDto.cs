@@ -6,5 +6,5 @@ namespace MareSynchronos.API.Dto.Group
 
 {
     [MessagePackObject(keyAsPropertyName: true)]
-    public record GroupZoneJoinDto(uint WorldId, LocationInfo LocationInfo);
+    public record GroupZoneJoinDto(LocationInfo LocationInfo);
 }
