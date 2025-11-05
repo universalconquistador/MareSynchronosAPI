@@ -39,6 +39,25 @@ namespace MareSynchronos.API.Data.Comparer
                 foreach (var b in obj.Broadcasters) hc.Add(b);
             return hc.ToHashCode();
         }
-    }
 
+        public static bool MultisetEquals(IEnumerable<GroupBroadcastDto> a, IEnumerable<GroupBroadcastDto> b)
+        {
+            if (a is ICollection<GroupBroadcastDto> ac &&
+                b is ICollection<GroupBroadcastDto> bc &&
+                ac.Count != bc.Count)
+                return false;
+
+            var counts = new Dictionary<GroupBroadcastDto, int>(Instance);
+            foreach (var x in a)
+                counts[x] = counts.TryGetValue(x, out var c) ? c + 1 : 1;
+
+            foreach (var y in b)
+            {
+                if (!counts.TryGetValue(y, out var c)) return false;
+                if (c == 1) counts.Remove(y);
+                else counts[y] = c - 1;
+            }
+            return counts.Count == 0;
+        }
+    }
 }
