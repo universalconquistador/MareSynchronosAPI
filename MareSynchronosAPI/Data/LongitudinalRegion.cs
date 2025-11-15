@@ -23,7 +23,7 @@ namespace MareSynchronos.API.Data
         /// The number of minutes <em>after</em> UTC for this longitudinal region.
         /// </summary>
         /// <remarks>
-        /// Ranges from -719 to 719 minutes (-12 to 12 hours).
+        /// Ranges from -720 to 719 minutes (-12 to 12 hours).
         /// </remarks>
         public int UtcOffsetMinutes { get; }
 
@@ -36,7 +36,7 @@ namespace MareSynchronos.API.Data
             // Wrap utcOffsetMinutes into the -12 hours to 12 hours range (-720 to 720 minutes)
             utcOffsetMinutes = WrappedMod(utcOffsetMinutes + _dayMinutes / 2, _dayMinutes) - _dayMinutes / 2;
 
-            Debug.Assert(utcOffsetMinutes > -_dayMinutes / 2 && utcOffsetMinutes < _dayMinutes / 2);
+            Debug.Assert(utcOffsetMinutes >= -_dayMinutes / 2 && utcOffsetMinutes < _dayMinutes / 2);
 
             UtcOffsetMinutes = utcOffsetMinutes;
         }
