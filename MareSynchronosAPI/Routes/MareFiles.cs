@@ -21,6 +21,8 @@ public class MareFiles
 
     public static Uri ServerFilesDeleteAllFullPath(Uri baseUri) => new(baseUri, ServerFiles + "/" + ServerFiles_DeleteAll);
     public static Uri ServerFilesFilesSendFullPath(Uri baseUri) => new(baseUri, ServerFiles + "/" + ServerFiles_FilesSend);
-    public static Uri ServerFilesGetSizesFullPath(Uri baseUri) => new(baseUri, ServerFiles + "/" + ServerFiles_GetSizes);
-    public static Uri ServerFilesUploadFullPath(Uri baseUri, string hash) => new(baseUri, ServerFiles + "/" + ServerFiles_Upload + "/" + hash);
+    public static Uri ServerFilesGetSizesFullPath(Uri baseUri, int? timeZoneOffset = null) => new(baseUri, ServerFiles + "/" + ServerFiles_GetSizes
+        + (timeZoneOffset != null ? "?timeZoneOffset=" + timeZoneOffset : string.Empty));
+    public static Uri ServerFilesUploadFullPath(Uri baseUri, string hash, int? timeZoneOffset = null) => new(baseUri, ServerFiles + "/" + ServerFiles_Upload + "/" + hash
+        + (timeZoneOffset != null ? "?timeZoneOffset=" + timeZoneOffset : string.Empty));
 }
