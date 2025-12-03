@@ -25,6 +25,14 @@ public record DownloadFileDto : ITransferFileDto
     /// </remarks>
     public string? DirectDownloadUrl { get; set; } = null;
 
+    /// <summary>
+    /// A <see cref="DownloadFileDto"/> for the compressed version of this file, if any.
+    /// </summary>
+    /// <remarks>
+    /// This way, clients can choose to download the compressed version rather than this one.
+    /// </remarks>
+    public DownloadFileDto? CompressedAlternateFileDownload { get; set; } = null;
+
     public long Size { get; set; } = 0;
     public bool IsForbidden { get; set; } = false;
     public string ForbiddenBy { get; set; } = string.Empty;
