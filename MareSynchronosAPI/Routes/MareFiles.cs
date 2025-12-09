@@ -37,6 +37,18 @@ public class MareFiles
             new(nameof(timeZoneOffset), timeZoneOffset?.ToString()),
             new(nameof(filenameExtension), filenameExtension));
 
+    public static Uri ServerFilesClaimCompressionTasksFullPath(Uri baseUri, string token, string filenameExtension, int count)
+        => BuildFullPath(baseUri, ServerFiles + "/" + ServerFiles_ClaimCompressionTasks,
+            new(nameof(token), token),
+            new(nameof(filenameExtension), filenameExtension),
+            new(nameof(count), count.ToString()));
+    public static Uri ServerFilesCancelCompressionTasksFullPath(Uri baseUri, string token)
+        => BuildFullPath(baseUri, ServerFiles + "/" + ServerFiles_CancelCompressionTasks, [
+            new(nameof(token), token)]);
+    public static Uri ServerFilesSubmitCompressionResultFullPath(Uri baseUri, string token, string hash)
+        => BuildFullPath(baseUri, ServerFiles + "/" + ServerFiles_SubmitCompressionResult + "/" + hash, [
+            new(nameof(token), token)]);
+
     private static Uri BuildFullPath(Uri baseUri, string path, params KeyValuePair<string, string?>[] queryParams)
     {
         if (queryParams.Length == 0)
