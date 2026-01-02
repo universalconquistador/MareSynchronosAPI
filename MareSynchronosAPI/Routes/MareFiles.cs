@@ -20,6 +20,7 @@ public class MareFiles
 
     public const string ServerFiles_ClaimCompressionTasks = "claimCompressionTasks";
     public const string ServerFiles_CancelCompressionTasks = "cancelCompressionTasks";
+    public const string ServerFiles_DisqualifyCompressionTask = "disqualifyCompressionTask";
     public const string ServerFiles_SubmitCompressionResult = "submitCompressionResult";
 
 
@@ -45,6 +46,10 @@ public class MareFiles
     public static Uri ServerFilesCancelCompressionTasksFullPath(Uri baseUri, string token)
         => BuildFullPath(baseUri, ServerFiles + "/" + ServerFiles_CancelCompressionTasks, [
             new(nameof(token), token)]);
+    public static Uri ServerFilesDisqualifyCompressionTaskFullPath(Uri baseUri, string token, string hash)
+        => BuildFullPath(baseUri, ServerFiles + "/" + ServerFiles_DisqualifyCompressionTask,
+            new(nameof(token), token),
+            new(nameof(hash), hash));
     public static Uri ServerFilesSubmitCompressionResultFullPath(Uri baseUri, string token, string hash)
         => BuildFullPath(baseUri, ServerFiles + "/" + ServerFiles_SubmitCompressionResult + "/" + hash, [
             new(nameof(token), token)]);
