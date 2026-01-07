@@ -33,6 +33,14 @@ public record DownloadFileDto : ITransferFileDto
     /// </remarks>
     public DownloadFileDto? CompressedAlternateFileDownload { get; set; } = null;
 
+    /// <summary>
+    /// True if there never will be a <see cref="CompressedAlternateFileDownload"/> for this file,
+    /// either because it is already compressed itself or it cannot be compressed,
+    /// or false if it is unknown whether it can be compressed, if a compressed alternate already exists,
+    /// or if compression still needs to be done.
+    /// </summary>
+    public bool WillNotBeCompressed { get; set; } = false;
+
     public long Size { get; set; } = 0;
     public bool IsForbidden { get; set; } = false;
     public string ForbiddenBy { get; set; } = string.Empty;
