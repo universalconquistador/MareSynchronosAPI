@@ -30,25 +30,12 @@ public sealed class ProfileBadge
 
 public enum ProfileStatus
 {
-    [EnumMember(Value = "Not Shared")]
     NotShared,
-
-    [EnumMember(Value = "Not Interested")]
     NotInterested,
-
-    [EnumMember(Value = "Taken")]
     Taken,
-
-    [EnumMember(Value = "Open")]
     Open,
-
-    [EnumMember(Value = "Looking")]
     Looking,
-
-    [EnumMember(Value = "It's Complicated")]
     ItsComplicated,
-
-    [EnumMember(Value = "Ask Me")]
     AskMe,
 }
 
@@ -64,8 +51,8 @@ public enum ProfileStatus
 
 public sealed class ProfileTheme
 {
-    public float[] Primary { get; set; } = [0.04f, 0.18f, 0.24f, 0.92f];     // #0A2D3C
-    public float[] Secondary { get; set; } = [0.23f, 0.34f, 0.40f, 0.92f];   // #3A5666
-    public float[] Accent { get; set; } = [0.29803923f, 0.56078434f, 0.64705884f, 0.92f];      // #62C6E8
-    public float[] TextPrimary { get; set; } = [0.95f, 0.98f, 1.00f, 1f]; // #F2FBFF
+    public float[] Primary { get; set; } = [0.04f, 0.18f, 0.24f, 0.92f];
+    public float[] Secondary { get; set; } = [0.23f, 0.34f, 0.40f, 0.92f];
+    public float[] Accent { get; set; } = [0.29803923f, 0.56078434f, 0.64705884f, 0.92f];
+    public float[] TextPrimary { get; set; } = [0.95f, 0.98f, 1.00f, 1f];
 }
