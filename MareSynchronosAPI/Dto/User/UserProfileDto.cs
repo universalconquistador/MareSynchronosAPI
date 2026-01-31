@@ -1,6 +1,7 @@
 ﻿using MareSynchronos.API.Data;
 using MessagePack;
-using System.Runtime.Serialization;
+using System.Numerics;
+using System.Text.Json.Serialization;
 
 namespace MareSynchronos.API.Dto.User;
 
@@ -39,20 +40,34 @@ public enum ProfileStatus
     AskMe,
 }
 
-//public sealed class SocialIds
-//{
-//    public string? Discord { get; set; }
-//    public string? TwitterX { get; set; }
-//    public string? Bluesky { get; set; }
-//    public string? Instagram { get; set; }
-//    public string? Facebook { get; set; }
-//    public string? Twitch { get; set; }
-//}
-
 public sealed class ProfileTheme
 {
     public float[] Primary { get; set; } = [0.04f, 0.18f, 0.24f, 0.92f];
     public float[] Secondary { get; set; } = [0.23f, 0.34f, 0.40f, 0.92f];
-    public float[] Accent { get; set; } = [0.29803923f, 0.56078434f, 0.64705884f, 0.92f];
+    public float[] Accent { get; set; } = [0.298f, 0.5608f, 0.647f, 0.92f];
     public float[] TextPrimary { get; set; } = [0.95f, 0.98f, 1.00f, 1f];
+
+    [JsonIgnore]
+    public Vector4 PrimaryV4
+    {
+        get => new(Primary[0], Primary[1], Primary[2], Primary[3]);
+    }
+
+    [JsonIgnore]
+    public Vector4 SecondaryV4
+    {
+        get => new(Secondary[0], Secondary[1], Secondary[2], Secondary[3]);
+    }
+
+    [JsonIgnore]
+    public Vector4 AccentV4
+    {
+        get => new(Accent[0], Accent[1], Accent[2], Accent[3]);
+    }
+
+    [JsonIgnore]
+    public Vector4 TextPrimaryV4
+    {
+        get => new(TextPrimary[0], TextPrimary[1], TextPrimary[2], TextPrimary[3]);
+    }
 }
