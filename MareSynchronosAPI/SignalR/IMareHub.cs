@@ -48,6 +48,14 @@ public interface IMareHub
     /// <param name="isListening">Whether the client is now listening for broadcasts.</param>
     Task Client_BroadcastListeningChanged(bool isListening);
 
+    /// <summary>
+    /// Sends an updated list of pending pairing requests to the client.
+    /// Add and remove from this to indicate new or no longer pending requests.
+    /// </summary>
+    /// <param name="dto"></param>
+    /// <returns></returns>
+    Task Client_UpdatePairRequests(UserPairRequestsDto dto);
+
     Task<ConnectionDto> GetConnectionDto();
 
     Task GroupBanUser(GroupPairDto dto, string reason);
@@ -125,4 +133,13 @@ public interface IMareHub
     /// <param name="location">The location of the player.</param>
     /// <returns>The broadcasts that have been received for the player.</returns>
     Task<List<GroupBroadcastDto>> BroadcastReceive(WorldData location);
+
+    /// <summary>
+    /// Adds a new pair request or confirms an existing to make a 2-way pairing.
+    /// </summary>
+    /// <param name="request"></param>
+    /// <returns></returns>
+    Task UserMakePairRequest(UserPairRequestDto request);
+
+    Task UserRejectPairRequest(UserData user);
 }

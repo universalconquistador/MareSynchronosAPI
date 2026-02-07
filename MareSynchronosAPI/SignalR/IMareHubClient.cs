@@ -60,4 +60,6 @@ public interface IMareHubClient : IMareHub
     void OnGposeLobbyPushWorldData(Action<UserData, WorldData> act);
 
     void OnBroadcastListeningChanged(Action<bool> act);
+
+    void OnUpdatePairRequests(Action<UserPairRequestsDto> act);
 }
