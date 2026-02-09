@@ -18,14 +18,17 @@ public class MareFiles
     // Called by a player to upload the data for an individual mod file.
     public const string ServerFiles_Upload = "upload";
 
+    // Called by a player to update or delete or download a profile image
+    public const string ServerFiles_Profile = "profile";
+
     public const string ServerFiles_ClaimCompressionTasks = "claimCompressionTasks";
     public const string ServerFiles_CancelCompressionTasks = "cancelCompressionTasks";
     public const string ServerFiles_DisqualifyCompressionTask = "disqualifyCompressionTask";
     public const string ServerFiles_SubmitCompressionResult = "submitCompressionResult";
 
-
     public const string Main = "/main";
 
+    // mod sync system endpoints
     public static Uri ServerFilesDeleteAllFullPath(Uri baseUri)
         => BuildFullPath(baseUri, ServerFiles + "/" + ServerFiles_DeleteAll);
     public static Uri ServerFilesFilesSendFullPath(Uri baseUri)
@@ -38,6 +41,7 @@ public class MareFiles
             new(nameof(timeZoneOffset), timeZoneOffset?.ToString()),
             new(nameof(filenameExtension), filenameExtension));
 
+    // compression worker endpoints
     public static Uri ServerFilesClaimCompressionTasksFullPath(Uri baseUri, string token, string filenameExtension, int count)
         => BuildFullPath(baseUri, ServerFiles + "/" + ServerFiles_ClaimCompressionTasks,
             new(nameof(token), token),
@@ -54,6 +58,17 @@ public class MareFiles
         => BuildFullPath(baseUri, ServerFiles + "/" + ServerFiles_SubmitCompressionResult + "/" + hash, [
             new(nameof(token), token)]);
 
+    // profile image endpoints
+    public static Uri ServerFilesProfileImageUpload(Uri baseUri, string imageUsage)
+        => BuildFullPath(baseUri, ServerFiles + "/" + ServerFiles_Profile + "/" + imageUsage);
+
+    public static Uri ServerFilesProfileImageDownload(Uri baseUri, string imageHash)
+        => BuildFullPath(baseUri, ServerFiles + "/" + ServerFiles_Profile + "/" + imageHash);
+
+    public static Uri ServerFilesProfileImageDelete(Uri baseUri, string imageHash)
+        => BuildFullPath(baseUri, ServerFiles + "/" + ServerFiles_Profile + "/" + imageHash);
+
+    // helpers
     private static Uri BuildFullPath(Uri baseUri, string path, params KeyValuePair<string, string?>[] queryParams)
     {
         if (queryParams.Length == 0)
