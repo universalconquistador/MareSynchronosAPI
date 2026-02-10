@@ -18,8 +18,11 @@ public class MareFiles
     // Called by a player to upload the data for an individual mod file.
     public const string ServerFiles_Upload = "upload";
 
-    // Called by a player to update or delete or download a profile image
+    // Called by a player to upload or update images for propfile profile
     public const string ServerFiles_Profile = "profile";
+
+    // Called by a player to get profiles images from a query param uid
+    public const string ServerFiles_ProfileImages = "profileImages";
 
     public const string ServerFiles_ClaimCompressionTasks = "claimCompressionTasks";
     public const string ServerFiles_CancelCompressionTasks = "cancelCompressionTasks";
@@ -62,8 +65,8 @@ public class MareFiles
     public static Uri ServerFilesProfileImageUpload(Uri baseUri, string imageUsage)
         => BuildFullPath(baseUri, ServerFiles + "/" + ServerFiles_Profile + "/" + imageUsage);
 
-    public static Uri ServerFilesProfileImageDownload(Uri baseUri, string imageHash)
-        => BuildFullPath(baseUri, ServerFiles + "/" + ServerFiles_Profile + "/" + imageHash);
+    public static Uri ServerFilesProfileImageDownload(Uri baseUri, string uid)
+        => BuildFullPath(baseUri, ServerFiles + "/" + ServerFiles_ProfileImages, [new(nameof(uid), uid)]);
 
     public static Uri ServerFilesProfileImageDelete(Uri baseUri, string imageHash)
         => BuildFullPath(baseUri, ServerFiles + "/" + ServerFiles_Profile + "/" + imageHash);
