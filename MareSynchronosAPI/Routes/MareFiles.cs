@@ -68,8 +68,8 @@ public class MareFiles
     public static Uri ServerFilesProfileImageDownload(Uri baseUri, string uid)
         => BuildFullPath(baseUri, ServerFiles + "/" + ServerFiles_ProfileImages, [new(nameof(uid), uid)]);
 
-    public static Uri ServerFilesProfileImageDelete(Uri baseUri, string imageHash)
-        => BuildFullPath(baseUri, ServerFiles + "/" + ServerFiles_Profile + "/" + imageHash);
+    public static Uri ServerFilesProfileImageDelete(Uri baseUri, string imageUsage)
+        => BuildFullPath(baseUri, ServerFiles + "/" + ServerFiles_Profile + "/" + imageUsage);
 
     // helpers
     private static Uri BuildFullPath(Uri baseUri, string path, params KeyValuePair<string, string?>[] queryParams)
