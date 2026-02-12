@@ -33,6 +33,7 @@ public interface IMareHub
     Task Client_UserUpdateOtherPairPermissions(UserPermissionsDto dto);
     Task Client_UpdateUserIndividualPairStatusDto(UserIndividualPairStatusDto dto);
     Task Client_UserUpdateProfile(UserDto dto);
+    Task Client_UserUpdatePreferences(UserPreferencesDto dto);
     Task Client_UserUpdateSelfPairPermissions(UserPermissionsDto dto);
     Task Client_UserUpdateDefaultPermissions(DefaultPermissionsDto dto);
     Task Client_GroupChangeUserPairPermissions(GroupPairUserPermissionDto dto);
