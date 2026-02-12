@@ -88,6 +88,7 @@ public interface IMareHub
     Task UserRemovePair(UserDto userDto);
     Task UserSetProfile(UserProfileDto userDescription);
     Task UserUpdateDefaultPermissions(DefaultPermissionsDto defaultPermissionsDto);
+    Task UserUpdatePreferences(UserPreferencesDto userPreferencesDto);
     Task SetBulkPermissions(BulkPermissionsDto dto);
 
     Task<CharaDataFullDto?> CharaDataCreate();
