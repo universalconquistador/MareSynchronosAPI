@@ -33,6 +33,7 @@ public interface IMareHub
     Task Client_UserUpdateOtherPairPermissions(UserPermissionsDto dto);
     Task Client_UpdateUserIndividualPairStatusDto(UserIndividualPairStatusDto dto);
     Task Client_UserUpdateProfile(UserDto dto);
+    Task Client_UserUpdatePreferences(UserPreferencesDto dto);
     Task Client_UserUpdateSelfPairPermissions(UserPermissionsDto dto);
     Task Client_UserUpdateDefaultPermissions(DefaultPermissionsDto dto);
     Task Client_GroupChangeUserPairPermissions(GroupPairUserPermissionDto dto);
@@ -47,6 +48,14 @@ public interface IMareHub
     /// </summary>
     /// <param name="isListening">Whether the client is now listening for broadcasts.</param>
     Task Client_BroadcastListeningChanged(bool isListening);
+
+    /// <summary>
+    /// Sends an updated list of pending pairing requests to the client.
+    /// Add and remove from this to indicate new or no longer pending requests.
+    /// </summary>
+    /// <param name="dto"></param>
+    /// <returns></returns>
+    Task Client_UpdatePairRequests(UserPairRequestsDto dto);
 
     Task<ConnectionDto> GetConnectionDto();
 
@@ -79,6 +88,7 @@ public interface IMareHub
     Task UserRemovePair(UserDto userDto);
     Task UserSetProfile(UserProfileDto userDescription);
     Task UserUpdateDefaultPermissions(DefaultPermissionsDto defaultPermissionsDto);
+    Task UserUpdatePreferences(UserPreferencesDto userPreferencesDto);
     Task SetBulkPermissions(BulkPermissionsDto dto);
 
     Task<CharaDataFullDto?> CharaDataCreate();
@@ -125,4 +135,13 @@ public interface IMareHub
     /// <param name="location">The location of the player.</param>
     /// <returns>The broadcasts that have been received for the player.</returns>
     Task<List<GroupBroadcastDto>> BroadcastReceive(WorldData location);
+
+    /// <summary>
+    /// Adds a new pair request or confirms an existing to make a 2-way pairing.
+    /// </summary>
+    /// <param name="request"></param>
+    /// <returns></returns>
+    Task UserMakePairRequest(UserPairRequestDto request);
+
+    Task UserRejectPairRequest(UserData user);
 }

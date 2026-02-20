@@ -49,6 +49,8 @@ public interface IMareHubClient : IMareHub
 
     void OnUserDefaultPermissionUpdate(Action<DefaultPermissionsDto> act);
 
+    void OnUserUpdatePreferences(Action<UserPreferencesDto> act);
+
     void OnUpdateUserIndividualPairStatusDto(Action<UserIndividualPairStatusDto> act);
 
     void OnGroupChangeUserPairPermissions(Action<GroupPairUserPermissionDto> act);
@@ -60,4 +62,6 @@ public interface IMareHubClient : IMareHub
     void OnGposeLobbyPushWorldData(Action<UserData, WorldData> act);
 
     void OnBroadcastListeningChanged(Action<bool> act);
+
+    void OnUpdatePairRequests(Action<UserPairRequestsDto> act);
 }

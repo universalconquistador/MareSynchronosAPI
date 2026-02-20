@@ -1,4 +1,5 @@
 ﻿using MareSynchronos.API.Data;
+using MareSynchronos.API.Dto.User;
 using MessagePack;
 
 namespace MareSynchronos.API.Dto;
@@ -12,6 +13,7 @@ public record ConnectionDto(UserData User)
     public bool IsModerator { get; set; }
     public ServerInfo ServerInfo { get; set; } = new();
     public DefaultPermissionsDto DefaultPreferredPermissions { get; set; } = new();
+    public UserPreferencesDto UserPreferences { get; set; } = new();
 }
 
 [MessagePackObject(keyAsPropertyName: true)]
