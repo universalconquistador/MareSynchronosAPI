@@ -143,5 +143,5 @@ public interface IMareHub
     /// <returns></returns>
     Task UserMakePairRequest(UserPairRequestDto request);
 
-    Task UserRejectPairRequest(UserData user);
+    Task UserRejectPairRequest(UserPairRequestDto request);
 }
