@@ -5,8 +5,7 @@ namespace MareSynchronos.API.Data.Validators
     public static class ProfileValidator
     {
         public const int MaxPronounsLen = 40;
-        public const int MaxAboutMeLen = 200;
-        public const int MaxSocialLen = 64;
+        public const int MaxAboutMeLen = 445;
 
         public static bool TryValidate(ProfileV1 doc, out List<string> errors)
         {
