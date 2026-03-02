@@ -18,6 +18,9 @@ public class MareFiles
     // Called by a player to upload the data for an individual mod file.
     public const string ServerFiles_Upload = "upload";
 
+    // Called by a player to report a file that is generating download errors.
+    public const string ServerFiles_ReportFile = "reportFile";
+
     // Called by a player to upload or update images for propfile profile
     public const string ServerFiles_Profile = "profile";
 
