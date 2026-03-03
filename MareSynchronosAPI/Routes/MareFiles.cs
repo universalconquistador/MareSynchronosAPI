@@ -46,6 +46,8 @@ public class MareFiles
         => BuildFullPath(baseUri, ServerFiles + "/" + ServerFiles_Upload + "/" + hash,
             new(nameof(timeZoneOffset), timeZoneOffset?.ToString()),
             new(nameof(filenameExtension), filenameExtension));
+    public static Uri ServerFilesReportFile(Uri baseUri)
+        => BuildFullPath(baseUri, ServerFiles + "/" + ServerFiles_ReportFile);
 
     // compression worker endpoints
     public static Uri ServerFilesClaimCompressionTasksFullPath(Uri baseUri, string token, string filenameExtension, int count)
