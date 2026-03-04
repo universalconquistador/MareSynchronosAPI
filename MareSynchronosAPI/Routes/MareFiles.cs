@@ -18,6 +18,9 @@ public class MareFiles
     // Called by a player to upload the data for an individual mod file.
     public const string ServerFiles_Upload = "upload";
 
+    // Called by a player to report a file that is generating download errors.
+    public const string ServerFiles_ReportFile = "reportFile";
+
     // Called by a player to upload or update images for propfile profile
     public const string ServerFiles_Profile = "profile";
 
@@ -43,6 +46,8 @@ public class MareFiles
         => BuildFullPath(baseUri, ServerFiles + "/" + ServerFiles_Upload + "/" + hash,
             new(nameof(timeZoneOffset), timeZoneOffset?.ToString()),
             new(nameof(filenameExtension), filenameExtension));
+    public static Uri ServerFilesReportFile(Uri baseUri)
+        => BuildFullPath(baseUri, ServerFiles + "/" + ServerFiles_ReportFile);
 
     // compression worker endpoints
     public static Uri ServerFilesClaimCompressionTasksFullPath(Uri baseUri, string token, string filenameExtension, int count)
