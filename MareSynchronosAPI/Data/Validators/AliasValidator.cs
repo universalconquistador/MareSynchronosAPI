@@ -6,6 +6,7 @@ namespace MareSynchronos.API.Data.Validators
         public static bool IsValidAlias(string alias)
         {
             if (string.IsNullOrEmpty(alias)) return false;
+            if (alias.Length < 5 || alias.Length > 15) return false;
             foreach (char chara in alias)
                 if (!(char.IsLetterOrDigit(chara) || chara == '_' || chara == '-'))
                     return false;
