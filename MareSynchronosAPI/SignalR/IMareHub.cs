@@ -144,4 +144,6 @@ public interface IMareHub
     Task UserMakePairRequest(UserPairRequestDto request);
 
     Task UserRejectPairRequest(UserPairRequestDto request);
+    Task<AccountInfoDto> GetAccountInfo();
+    Task<(bool, string)> UpdateAlias(UserData? userData = null, GroupData? groupData = null);
 }
