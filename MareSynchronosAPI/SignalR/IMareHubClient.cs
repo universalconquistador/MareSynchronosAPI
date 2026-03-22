@@ -2,6 +2,7 @@
 using MareSynchronos.API.Data.Enum;
 using MareSynchronos.API.Dto;
 using MareSynchronos.API.Dto.CharaData;
+using MareSynchronos.API.Dto.Emote;
 using MareSynchronos.API.Dto.Group;
 using MareSynchronos.API.Dto.User;
 
@@ -64,4 +65,6 @@ public interface IMareHubClient : IMareHub
     void OnBroadcastListeningChanged(Action<bool> act);
 
     void OnUpdatePairRequests(Action<UserPairRequestsDto> act);
+    void OnUpdateEmoteSyncUsers(Action<EmoteResponseDto> act);
+    void OnStartEmoteSyncGroup(Action<ScheduledEmoteActionDto> act);
 }

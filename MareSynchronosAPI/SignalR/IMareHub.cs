@@ -2,6 +2,7 @@
 using MareSynchronos.API.Data.Enum;
 using MareSynchronos.API.Dto;
 using MareSynchronos.API.Dto.CharaData;
+using MareSynchronos.API.Dto.Emote;
 using MareSynchronos.API.Dto.Group;
 using MareSynchronos.API.Dto.User;
 
@@ -56,6 +57,8 @@ public interface IMareHub
     /// <param name="dto"></param>
     /// <returns></returns>
     Task Client_UpdatePairRequests(UserPairRequestsDto dto);
+    Task Client_UpdateEmoteSyncUsers(EmoteResponseDto dto);
+    Task Client_StartEmoteSyncGroup(ScheduledEmoteActionDto dto);
 
     Task<ConnectionDto> GetConnectionDto();
 
@@ -146,4 +149,5 @@ public interface IMareHub
     Task UserRejectPairRequest(UserPairRequestDto request);
     Task<AccountInfoDto> GetAccountInfo();
     Task<(bool, string)> UpdateAlias(UserData? userData = null, GroupData? groupData = null);
+    Task UserEmoteSyncAction(EmoteActionDto dto);
 }
