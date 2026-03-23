@@ -6,5 +6,6 @@ public enum EmoteSyncAction
     Leave,
     NotReady,
     Ready,
-    Start
+    Start,
+    Kick
 }
