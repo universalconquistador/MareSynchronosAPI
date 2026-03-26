@@ -65,6 +65,7 @@ public interface IMareHubClient : IMareHub
     void OnBroadcastListeningChanged(Action<bool> act);
 
     void OnUpdatePairRequests(Action<UserPairRequestsDto> act);
+    void OnUpdateGroupInvites(Action<GroupJoinInvitesDto> act);
     void OnUpdateEmoteSyncUsers(Action<EmoteResponseDto> act);
     void OnStartEmoteSyncGroup(Action<ScheduledEmoteActionDto> act);
 }
