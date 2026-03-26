@@ -57,6 +57,7 @@ public interface IMareHub
     /// <param name="dto"></param>
     /// <returns></returns>
     Task Client_UpdatePairRequests(UserPairRequestsDto dto);
+    Task Client_UpdateGroupInvites(GroupJoinInvitesDto dto);
     Task Client_UpdateEmoteSyncUsers(EmoteResponseDto dto);
     Task Client_StartEmoteSyncGroup(ScheduledEmoteActionDto dto);
 
@@ -147,6 +148,10 @@ public interface IMareHub
     Task UserMakePairRequest(UserPairRequestDto request);
 
     Task UserRejectPairRequest(UserPairRequestDto request);
+
+    Task GroupUserInvite(GroupPairDto dto);
+    Task GroupUserRejectInvite(GroupJoinInviteDto dto);
+
     Task<AccountInfoDto> GetAccountInfo();
     Task<(bool, string)> UpdateAlias(UserData? userData = null, GroupData? groupData = null);
     Task UserEmoteSyncAction(EmoteActionDto dto);
