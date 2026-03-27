@@ -4,7 +4,7 @@ using MessagePack;
 namespace MareSynchronos.API.Dto.Group;
 
 [MessagePackObject(keyAsPropertyName: true)]
-public record GroupJoinInviteDto(Guid RequestId, GroupData Group, UserData? InvitingUser)
+public record GroupJoinInviteDto(string RequestId, GroupData Group, UserData? InvitingUser)
 {
     public GroupData Group { get; set; } = Group;
     public string GID => Group.GID;
