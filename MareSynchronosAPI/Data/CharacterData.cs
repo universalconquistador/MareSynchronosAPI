@@ -29,6 +29,7 @@ public class CharacterData
 
     public Dictionary<ObjectKind, List<FileReplacementData>> FileReplacements { get; set; } = new();
     public Dictionary<ObjectKind, string> GlamourerData { get; set; } = new();
+    public Dictionary<ObjectKind, string> LociData { get; set; } = new();
     public string HeelsData { get; set; } = string.Empty;
     public string HonorificData { get; set; } = string.Empty;
     public string ManipulationData { get; set; } = string.Empty;
