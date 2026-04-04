@@ -60,6 +60,7 @@ public interface IMareHub
     Task Client_UpdateGroupInvites(GroupJoinInvitesDto dto);
     Task Client_UpdateEmoteSyncUsers(EmoteResponseDto dto);
     Task Client_StartEmoteSyncGroup(ScheduledEmoteActionDto dto);
+    Task Client_ProcessJsonDataType(JsonDataTypeDto dto);
 
     Task<ConnectionDto> GetConnectionDto();
 
@@ -155,4 +156,6 @@ public interface IMareHub
     Task<AccountInfoDto> GetAccountInfo();
     Task<(bool, string)> UpdateAlias(UserData? userData = null, GroupData? groupData = null);
     Task UserEmoteSyncAction(EmoteActionDto dto);
+
+    Task<JsonDataResponseDto> UserSendJsonData(JsonDataTypeDto dto);
 }

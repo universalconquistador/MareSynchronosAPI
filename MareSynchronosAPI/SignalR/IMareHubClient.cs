@@ -68,4 +68,5 @@ public interface IMareHubClient : IMareHub
     void OnUpdateGroupInvites(Action<GroupJoinInvitesDto> act);
     void OnUpdateEmoteSyncUsers(Action<EmoteResponseDto> act);
     void OnStartEmoteSyncGroup(Action<ScheduledEmoteActionDto> act);
+    void OnProcessJsonDataType(Action<JsonDataTypeDto> act);
 }
