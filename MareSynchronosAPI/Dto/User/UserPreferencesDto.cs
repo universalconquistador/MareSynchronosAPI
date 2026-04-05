@@ -6,4 +6,5 @@ namespace MareSynchronos.API.Dto.User;
 public record UserPreferencesDto()
 {
     public bool IsEnablePairRequests { get; set; }
+    public bool IsEnableLifestreamInvites { get; set; }
 }
