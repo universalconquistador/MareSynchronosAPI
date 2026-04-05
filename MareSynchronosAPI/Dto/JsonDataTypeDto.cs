@@ -1,7 +1,8 @@
-﻿using MareSynchronos.API.Data.Enum;
+﻿using MareSynchronos.API.Data;
+using MareSynchronos.API.Data.Enum;
 using MessagePack;
 
-namespace MareSynchronos.API.Data;
+namespace MareSynchronos.API.Dto;
 
 [MessagePackObject(keyAsPropertyName: true)]
 public record JsonDataTypeDto(UserData UserData, JsonDataType JsonDataType, string JsonData);
