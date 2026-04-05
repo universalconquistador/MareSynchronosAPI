@@ -79,8 +79,9 @@ public static class JsonDataTypeValidators
         if ((hasDistrict || hasWard || hasPlot) && !(hasDistrict && hasWard && hasPlot))
             return false;
 
-        if (!GameData.HousingDistricts.Contains(payload.District!))
-            return false;
+        if (hasDistrict)
+            if (!GameData.HousingDistricts.Contains(payload.District!))
+                return false;
 
         if (hasWard)
         {
