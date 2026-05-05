@@ -66,40 +66,12 @@ public static class JsonDataTypeValidators
 
     private static bool ValidateLifestreamLocationInvite(LifestreamParseableAddress payload)
     {
-        if (string.IsNullOrWhiteSpace(payload.World))
-            return false;
+        var addressBookEntry = payload.AddressBookEntry;
 
-        if (!GameData.Worlds.Contains(payload.World))
-            return false;
-
-        bool hasDistrict = !string.IsNullOrWhiteSpace(payload.District);
-        bool hasWard = !string.IsNullOrWhiteSpace(payload.Ward);
-        bool hasPlot = !string.IsNullOrWhiteSpace(payload.Plot);
-
-        if ((hasDistrict || hasWard || hasPlot) && !(hasDistrict && hasWard && hasPlot))
-            return false;
-
-        if (hasDistrict)
-            if (!GameData.HousingDistricts.Contains(payload.District!))
-                return false;
-
-        if (hasWard)
-        {
-            if (!int.TryParse(payload.Ward, out int wardNumber))
-                return false;
-
-            if (wardNumber < 1 || wardNumber > 30)
-                return false;
-        }
-
-        if (hasPlot)
-        {
-            if (!int.TryParse(payload.Plot, out int plotNumber))
-                return false;
-
-            if (plotNumber < 1 || plotNumber > 60)
-                return false;
-        }
+        if (addressBookEntry.Name == null) return false;
+        if (addressBookEntry.Ward < 1 || addressBookEntry.Ward > 30) return false;
+        if (addressBookEntry.Plot < 1 || addressBookEntry.Plot > 60) return false;
+        if (addressBookEntry.Apartment < 1) return false;
 
         return true;
     }
