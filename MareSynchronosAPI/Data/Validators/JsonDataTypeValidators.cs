@@ -71,7 +71,7 @@ public static class JsonDataTypeValidators
         if (addressBookEntry.Name == null) return false;
         if (addressBookEntry.Ward < 1 || addressBookEntry.Ward > 30) return false;
         if (addressBookEntry.Plot < 1 || addressBookEntry.Plot > 60) return false;
-        if (addressBookEntry.Apartment < 1) return false;
+        //if (addressBookEntry.Apartment < 1) return false;
 
         return true;
     }
