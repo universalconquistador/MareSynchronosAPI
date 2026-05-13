@@ -1,4 +1,4 @@
-﻿namespace MareSynchronos.API.Data.Enuml;
+﻿namespace MareSynchronos.API.Data.Enum;
 
 public enum AddonPlugin
 {
