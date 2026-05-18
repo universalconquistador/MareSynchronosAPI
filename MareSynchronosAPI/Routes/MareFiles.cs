@@ -63,6 +63,10 @@ public class MareFiles
         => BuildFullPath(baseUri, ServerFiles + "/" + ServerFiles_DisqualifyCompressionTask,
             new(nameof(token), token),
             new(nameof(hash), hash));
+    public static Uri ServerFilesReportCompressionTaskFullPath(Uri baseUri, string token, string hash)
+            => BuildFullPath(baseUri, ServerFiles + "/" + ServerFiles_ReportCompressionTask,
+            new(nameof(token), token),
+            new(nameof(hash), hash));
     public static Uri ServerFilesSubmitCompressionResultFullPath(Uri baseUri, string token, string hash)
         => BuildFullPath(baseUri, ServerFiles + "/" + ServerFiles_SubmitCompressionResult + "/" + hash, [
             new(nameof(token), token)]);
