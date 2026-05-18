@@ -30,6 +30,7 @@ public class MareFiles
     public const string ServerFiles_ClaimCompressionTasks = "claimCompressionTasks";
     public const string ServerFiles_CancelCompressionTasks = "cancelCompressionTasks";
     public const string ServerFiles_DisqualifyCompressionTask = "disqualifyCompressionTask";
+    public const string ServerFiles_ReportCompressionTask = "reportCompressionTask";
     public const string ServerFiles_SubmitCompressionResult = "submitCompressionResult";
 
     public const string Main = "/main";
