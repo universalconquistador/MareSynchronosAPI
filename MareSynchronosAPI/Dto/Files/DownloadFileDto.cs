@@ -26,6 +26,11 @@ public record DownloadFileDto : ITransferFileDto
     public string? DirectDownloadUrl { get; set; } = null;
 
     /// <summary>
+    /// The string to munge the downloaded bytes with, if any.
+    /// </summary>
+    public string? MungeKey { get; set; } = null;
+
+    /// <summary>
     /// A <see cref="DownloadFileDto"/> for the compressed version of this file, if any.
     /// </summary>
     /// <remarks>

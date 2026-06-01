@@ -11,4 +11,5 @@ public class CompressionTaskDto
     public string Hash { get; set; } = string.Empty;
     public string FilenameExtension { get; set; } = string.Empty;
     public string DownloadUrl { get; set; } = string.Empty;
+    public string? MungeKey { get; set; } = null;
 }
