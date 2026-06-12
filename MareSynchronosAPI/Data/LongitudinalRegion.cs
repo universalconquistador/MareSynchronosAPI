@@ -61,6 +61,11 @@ namespace MareSynchronos.API.Data
             return distance;
         }
 
+        public override string ToString()
+        {
+            return $"UTC{(UtcOffsetMinutes >= 0 ? "+" : "-")}{Math.Abs(UtcOffsetMinutes) / 60}:{Math.Abs(UtcOffsetMinutes) % 60:D2}";
+        }
+
         /// <summary>
         /// Creates a <see cref="LongitudinalRegion"/> identifying the region of the given time zone.
         /// </summary>

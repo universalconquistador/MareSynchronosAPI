@@ -158,4 +158,6 @@ public interface IMareHub
     Task UserEmoteSyncAction(EmoteActionDto dto);
 
     Task<JsonDataResponseDto> UserSendJsonData(JsonDataTypeDto dto);
+
+    Task SubmitTransferMetrics(TransferMetricsDto dto);
 }
