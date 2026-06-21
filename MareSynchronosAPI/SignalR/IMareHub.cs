@@ -159,5 +159,4 @@ public interface IMareHub
 
     Task<JsonDataResponseDto> UserSendJsonData(JsonDataTypeDto dto);
 
-    Task SubmitTransferMetrics(TransferMetricsDto dto);
 }
