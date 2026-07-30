@@ -36,19 +36,24 @@ public class MareFiles
     public const string Main = "/main";
 
     // mod sync system endpoints
-    public static Uri ServerFilesDeleteAllFullPath(Uri baseUri)
-        => BuildFullPath(baseUri, ServerFiles + "/" + ServerFiles_DeleteAll);
-    public static Uri ServerFilesFilesSendFullPath(Uri baseUri)
-        => BuildFullPath(baseUri, ServerFiles + "/" + ServerFiles_FilesSend);
-    public static Uri ServerFilesGetSizesFullPath(Uri baseUri, int? timeZoneOffset = null)
+    public static Uri ServerFilesDeleteAllFullPath(Uri baseUri, int fileStoreId = 0)
+        => BuildFullPath(baseUri, ServerFiles + "/" + ServerFiles_DeleteAll, [
+            new(nameof(fileStoreId), fileStoreId.ToString())]);
+    public static Uri ServerFilesFilesSendFullPath(Uri baseUri, int fileStoreId = 0)
+        => BuildFullPath(baseUri, ServerFiles + "/" + ServerFiles_FilesSend, [
+            new(nameof(fileStoreId), fileStoreId.ToString())]);
+    public static Uri ServerFilesGetSizesFullPath(Uri baseUri, int? timeZoneOffset = null, int fileStoreId = 0)
         => BuildFullPath(baseUri, ServerFiles + "/" + ServerFiles_GetSizes, [
-            new(nameof(timeZoneOffset), timeZoneOffset?.ToString())]);
-    public static Uri ServerFilesUploadFullPath(Uri baseUri, string hash, int? timeZoneOffset = null, string? filenameExtension = null)
+            new(nameof(timeZoneOffset), timeZoneOffset?.ToString()),
+            new(nameof(fileStoreId), fileStoreId.ToString())]);
+    public static Uri ServerFilesUploadFullPath(Uri baseUri, string hash, int? timeZoneOffset = null, string? filenameExtension = null, int fileStoreId = 0)
         => BuildFullPath(baseUri, ServerFiles + "/" + ServerFiles_Upload + "/" + hash,
             new(nameof(timeZoneOffset), timeZoneOffset?.ToString()),
-            new(nameof(filenameExtension), filenameExtension));
-    public static Uri ServerFilesReportFile(Uri baseUri)
-        => BuildFullPath(baseUri, ServerFiles + "/" + ServerFiles_ReportFile);
+            new(nameof(filenameExtension), filenameExtension),
+            new(nameof(fileStoreId), fileStoreId.ToString()));
+    public static Uri ServerFilesReportFile(Uri baseUri, int fileStoreId = 0)
+        => BuildFullPath(baseUri, ServerFiles + "/" + ServerFiles_ReportFile, [
+            new(nameof(fileStoreId), fileStoreId.ToString())]);
 
     // compression worker endpoints
     public static Uri ServerFilesClaimCompressionTasksFullPath(Uri baseUri, string token, string filenameExtension, int count)
@@ -59,17 +64,20 @@ public class MareFiles
     public static Uri ServerFilesCancelCompressionTasksFullPath(Uri baseUri, string token)
         => BuildFullPath(baseUri, ServerFiles + "/" + ServerFiles_CancelCompressionTasks, [
             new(nameof(token), token)]);
-    public static Uri ServerFilesDisqualifyCompressionTaskFullPath(Uri baseUri, string token, string hash)
+    public static Uri ServerFilesDisqualifyCompressionTaskFullPath(Uri baseUri, string token, string hash, int fileStoreId)
         => BuildFullPath(baseUri, ServerFiles + "/" + ServerFiles_DisqualifyCompressionTask,
             new(nameof(token), token),
-            new(nameof(hash), hash));
-    public static Uri ServerFilesReportCompressionTaskFullPath(Uri baseUri, string token, string hash)
+            new(nameof(hash), hash),
+            new(nameof(fileStoreId), fileStoreId.ToString()));
+    public static Uri ServerFilesReportCompressionTaskFullPath(Uri baseUri, string token, string hash, int fileStoreId)
             => BuildFullPath(baseUri, ServerFiles + "/" + ServerFiles_ReportCompressionTask,
             new(nameof(token), token),
-            new(nameof(hash), hash));
-    public static Uri ServerFilesSubmitCompressionResultFullPath(Uri baseUri, string token, string hash)
-        => BuildFullPath(baseUri, ServerFiles + "/" + ServerFiles_SubmitCompressionResult + "/" + hash, [
-            new(nameof(token), token)]);
+            new(nameof(hash), hash),
+            new(nameof(fileStoreId), fileStoreId.ToString()));
+    public static Uri ServerFilesSubmitCompressionResultFullPath(Uri baseUri, string token, string hash, int fileStoreId)
+        => BuildFullPath(baseUri, ServerFiles + "/" + ServerFiles_SubmitCompressionResult + "/" + hash,
+            new(nameof(token), token),
+            new(nameof(fileStoreId), fileStoreId.ToString()));
 
     // profile image endpoints
     public static Uri ServerFilesProfileImageUpload(Uri baseUri, string imageUsage)
