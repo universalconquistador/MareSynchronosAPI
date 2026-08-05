@@ -4,6 +4,7 @@ using MareSynchronos.API.Dto;
 using MareSynchronos.API.Dto.CharaData;
 using MareSynchronos.API.Dto.Emote;
 using MareSynchronos.API.Dto.Group;
+using MareSynchronos.API.Dto.Stage;
 using MareSynchronos.API.Dto.User;
 
 namespace MareSynchronos.API.SignalR;
@@ -61,6 +62,26 @@ public interface IMareHub
     Task Client_UpdateEmoteSyncUsers(EmoteResponseDto dto);
     Task Client_StartEmoteSyncGroup(ScheduledEmoteActionDto dto);
     Task Client_ProcessJsonDataType(JsonDataTypeDto dto);
+
+    /// <summary>
+    /// Sent to a user when they subscribe and/or unsubscribe from stages either directly or through
+    /// the feed of a user or group.
+    /// </summary>
+    /// <param name="addedSubscribedStages">The stages that the user has just subscribed to.</param>
+    /// <param name="removedSubscribedStageIds">The IDs of the stages that the user has just unsubscribed from.</param>
+    Task Client_StageSubscriptionsChanged(StageFullInfoDto[] addedSubscribedStages, string[] removedSubscribedStageIds);
+    /// <summary>
+    /// Sent to a user when the contents of one of their subscribed stages changes.
+    /// </summary>
+    /// <param name="stageId">The ID of the stage whose contents has changed.</param>
+    /// <param name="newContents">The new contents of the stage.</param>
+    Task Client_StageSubscribedContentsChanged(string stageId, StageContentsDto newContents);
+    /// <summary>
+    /// Sent to a user when the state of one of their subscribed stages changes.
+    /// </summary>
+    /// <param name="stageId">The ID of the stage whose state has changed.</param>
+    /// <param name="newState">The new state of the stage.</param>
+    Task Client_StageSubscribedStateChanged(string stageId, StageStateDto newState);
 
     Task<ConnectionDto> GetConnectionDto();
 
@@ -159,4 +180,17 @@ public interface IMareHub
 
     Task<JsonDataResponseDto> UserSendJsonData(JsonDataTypeDto dto);
 
+    Task<StageFullInfoDto> StageCreate(string stageFileHash, List<StageModUsageDto> mods, string ownerGroupId, StageCustomizeDto customization, StageStateDto state);
+    Task<StageFullInfoDto> StageGetInfo(string stageId);
+    Task<(List<StageFullInfoDto> Stages, bool HasMore)> StageListForUser(string userId, int page);
+    Task<(List<StageFullInfoDto> Stages, bool HasMore)> StageListForGroup(string groupId, int page);
+    Task<(List<StageFullInfoDto> Stages, bool HasMore)> StageListSubscribed(int page);
+    Task StageDelete(string stageId);
+    Task<StageContentsDto> StageOverwriteContents(string stageId, string newStageFileHash, List<StageModUsageDto> newMods);
+    Task StageUpdateCustomize(string stageId, StageCustomizeDto newCustomization);
+    Task StageUpdateState(string stageId, StageStateDto newState);
+    Task StageSetSuscribed(string stageId, bool subscribed);
+    Task StageSetUserFeedSubscribed(string userId, bool subscribed);
+    Task StageSetGroupFeedSubscribed(string groupId, bool subscribed);
+    Task<StageFullInfoDto[]> StageGetSubscribedForLocation(uint worldId, uint territoryId, uint wardId, uint divisionId, uint houseId, uint roomId);
 }

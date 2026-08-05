@@ -4,6 +4,7 @@ using MareSynchronos.API.Dto;
 using MareSynchronos.API.Dto.CharaData;
 using MareSynchronos.API.Dto.Emote;
 using MareSynchronos.API.Dto.Group;
+using MareSynchronos.API.Dto.Stage;
 using MareSynchronos.API.Dto.User;
 
 namespace MareSynchronos.API.SignalR;
@@ -69,4 +70,8 @@ public interface IMareHubClient : IMareHub
     void OnUpdateEmoteSyncUsers(Action<EmoteResponseDto> act);
     void OnStartEmoteSyncGroup(Action<ScheduledEmoteActionDto> act);
     void OnProcessJsonDataType(Action<JsonDataTypeDto> act);
+
+    void OnStageSubscriptionsChanged(Action<List<StageFullInfoDto>, List<string>> act);
+    void OnStageSubscribedContentsChanged(Action<string, StageContentsDto> act);
+    void OnStageSubscribedStateChanged(Action<string, StageStateDto> act);
 }
