@@ -12,4 +12,7 @@ public class CompressionTaskDto
     public string FilenameExtension { get; set; } = string.Empty;
     public string DownloadUrl { get; set; } = string.Empty;
     public string? MungeKey { get; set; } = null;
+    public int StoreId { get; set; } = 0;
 }
+
+public record class CompressionClaimDto(string Hash, int StoreId);
