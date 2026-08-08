@@ -71,7 +71,7 @@ public interface IMareHubClient : IMareHub
     void OnStartEmoteSyncGroup(Action<ScheduledEmoteActionDto> act);
     void OnProcessJsonDataType(Action<JsonDataTypeDto> act);
 
-    void OnStageSubscriptionsChanged(Action<List<StageFullInfoDto>, List<string>> act);
+    void OnStageSubscriptionsChanged(Action<StageFullInfoDto[], string[]> act);
     void OnStageSubscribedContentsChanged(Action<string, StageContentsDto> act);
     void OnStageSubscribedStateChanged(Action<string, StageStateDto> act);
 }

@@ -189,7 +189,7 @@ public interface IMareHub
     Task<StageContentsDto> StageOverwriteContents(string stageId, string newStageFileHash, List<StageModUsageDto> newMods);
     Task StageUpdateCustomize(string stageId, StageCustomizeDto newCustomization);
     Task StageUpdateState(string stageId, StageStateDto newState);
-    Task StageSetSuscribed(string stageId, bool subscribed);
+    Task StageSetSubscribed(string stageId, bool subscribed);
     Task StageSetUserFeedSubscribed(string userId, bool subscribed);
     Task StageSetGroupFeedSubscribed(string groupId, bool subscribed);
     Task<StageFullInfoDto[]> StageGetSubscribedForLocation(uint worldId, uint territoryId, uint wardId, uint divisionId, uint houseId, uint roomId);
