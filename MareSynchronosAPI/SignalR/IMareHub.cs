@@ -185,6 +185,7 @@ public interface IMareHub
     Task<(List<StageFullInfoDto> Stages, bool HasMore)> StageListForUser(string userId, int page);
     Task<(List<StageFullInfoDto> Stages, bool HasMore)> StageListForGroup(string groupId, int page);
     Task<(List<StageFullInfoDto> Stages, bool HasMore)> StageListSubscribed(int page);
+    Task<(List<string> UserIds, List<string> GroupIds)> StageGetSubscribedFeeds();
     Task StageDelete(string stageId);
     Task<StageContentsDto> StageOverwriteContents(string stageId, string newStageFileHash, List<StageModUsageDto> newMods);
     Task StageUpdateCustomize(string stageId, StageCustomizeDto newCustomization);

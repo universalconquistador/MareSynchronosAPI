@@ -22,4 +22,5 @@ public class StageModUsageDto
 {
     public string ModpackId { get; set; } = "";
     public string Hash { get; set; } = "";
+    public string GamePath { get; set; } = "";
 }
