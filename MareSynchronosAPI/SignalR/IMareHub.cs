@@ -193,5 +193,5 @@ public interface IMareHub
     Task StageSetSubscribed(string stageId, bool subscribed);
     Task StageSetUserFeedSubscribed(string userId, bool subscribed);
     Task StageSetGroupFeedSubscribed(string groupId, bool subscribed);
-    Task<StageFullInfoDto[]> StageGetSubscribedForLocation(uint worldId, uint territoryId, uint wardId, uint divisionId, uint houseId, uint roomId);
+    Task<StageFullInfoDto[]> StageGetSubscribedForLocation(int worldId, int territoryId, int wardId, int divisionId, int houseId, int roomId);
 }

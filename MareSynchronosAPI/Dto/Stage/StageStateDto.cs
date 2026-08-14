@@ -12,12 +12,12 @@ namespace MareSynchronos.API.Dto.Stage;
 public class StageStateDto
 {
     // Location
-    public uint LocationWorldId { get; set; } = 0;
-    public uint LocationTerritoryId { get; set; } = 0;
-    public uint LocationWardId { get; set; } = 0;
-    public uint LocationDivisionId { get; set; } = 0;
-    public uint LocationHouseId { get; set; } = 0;
-    public uint LocationRoomId { get; set; } = 0;
+    public int LocationWorldId { get; set; } = 0;
+    public int LocationTerritoryId { get; set; } = 0;
+    public int LocationWardId { get; set; } = 0;
+    public int LocationDivisionId { get; set; } = 0;
+    public int LocationHouseId { get; set; } = 0;
+    public int LocationRoomId { get; set; } = 0;
 
     // Transform
     public Vector3 Translation { get; set; } = Vector3.Zero;
