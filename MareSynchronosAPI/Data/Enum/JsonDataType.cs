@@ -2,5 +2,6 @@
 
 public enum JsonDataType
 {
-    LifestreamLocationInvite
+    LifestreamLocationInvite,
+    MoodlesRemote
 }
