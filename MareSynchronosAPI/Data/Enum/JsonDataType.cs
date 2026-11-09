@@ -3,5 +3,7 @@
 public enum JsonDataType
 {
     LifestreamLocationInvite,
-    MoodlesRemote
+    MoodlesRemote,
+    CharacterSelect,
+    GenericPlugin
 }
